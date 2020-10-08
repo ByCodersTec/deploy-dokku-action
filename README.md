@@ -31,5 +31,5 @@ jobs:
 * **PRIVATE_KEY**: Your SSH private key, preferably from Secrets.
 * **PUBLIC_KEY**: Your SSH public key, preferably from Secrets.
 * **HOST**: The host the action will SSH to run the git push command. ie, `your.site.com`.
-* **PROJECT**: The project is a Dokku project name.
+* **PROJECT**: The project name is used to define the app name.
 * **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.

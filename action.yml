@@ -1,0 +1,26 @@
+name: Deploy to Dokku
+author: Bycoders
+description: Push changes to Dokku server to automatically deploy the application.
+branding:
+    icon: server
+    color: blue
+inputs:
+  PRIVATE_KEY:
+    description: Private key to use for SSH authentication.
+    required: true
+  PUBLIC_KEY:
+    description: Public key to use for SSH authentication.
+    required: true
+  PROJECT:
+    description: Name of the application (as created in Dokku).
+    required: true
+  HOST:
+    descripion: Domain (or IP address) where the application will be deployed.
+    required: true
+  BRANCH:
+    description: Branch used to deploy the application.
+    required: true
+    default: master
+runs:
+  using: docker
+  image: Dockerfile

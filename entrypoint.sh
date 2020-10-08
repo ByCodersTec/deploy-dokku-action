@@ -32,6 +32,6 @@ echo $CREATE_APP_COMMAND
 echo $SET_VARIABLES_COMMAND
 echo "======================"
 
-GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $CREATE_APP_COMMAND | $SET_VARIABLES_COMMAND"
+ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no $CREATE_APP_COMMAND
 
-#GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master
+GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master

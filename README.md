@@ -17,10 +17,10 @@ jobs:
     steps:
       - uses: actions/checkout@v1
       - name: Deploy the application
-        uses: ByCodersTec/deploy-dokku-action@master
+        uses: ByCodersTec/deploy-dokku-action@main
         with:
-          PRIVATE_KEY: ${{ secrets.DOKKU_PRIVATE_KEY }}
-          PUBLIC_KEY: ${{ secrets.DOKKU_PUBLIC_KEY }}
+          PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
           HOST: ${{ secrets.DOKKU_HOST }}
           PROJECT: project-name
           BRANCH: ${{ github.head_ref }}

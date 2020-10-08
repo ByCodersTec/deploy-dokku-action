@@ -28,7 +28,7 @@ APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 CREATE_APP_COMMAND="sh ./scripts/deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 SET_VARIABLES_COMMAND="bash ./scripts/variables.sh $INPUT_PROJECT $INPUT_BRANCH"
 POST_DEPLOY_COMMAND="sh ./scripts/after_deploy.sh $INPUT_BRANCH"
-sh ./scripts/after_deploy.sh $BASE_BRANCH
+
 echo "========commands======"
 echo $CREATE_APP_COMMAND
 echo $SET_VARIABLES_COMMAND

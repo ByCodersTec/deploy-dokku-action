@@ -27,6 +27,12 @@ APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 
 CREATE_APP_COMMAND="sh ./scripts/deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 SET_VARIABLES_COMMAND="bash ./scripts/variables.sh $INPUT_PROJECT $INPUT_BRANCH"
+echo "========host======"
+echo $INPUT_HOST
+echo "=================="
+echo $CREATE_APP_COMMAND
+echo $SET_VARIABLES_COMMAND
+
 ssh root@$INPUT_HOST $CREATE_APP_COMMAND | $SET_VARIABLES_COMMAND
 
 GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master

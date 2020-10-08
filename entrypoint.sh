@@ -22,4 +22,7 @@ ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
 git checkout "$INPUT_BRANCH"
 
-GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$INPUT_PROJECT" "$INPUT_BRANCH":master
+APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
+APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
+
+GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master

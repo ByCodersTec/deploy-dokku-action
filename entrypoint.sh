@@ -25,7 +25,7 @@ echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
-echo "checkout git branch..."
+echo "checkout git branch...$INPUT_BRANCH"
 
 git checkout "$INPUT_BRANCH"
 

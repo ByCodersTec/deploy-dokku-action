@@ -16,11 +16,20 @@ chmod 600 "$SSH_PATH/deploy_key"
 chmod 600 "$SSH_PATH/deploy_key.pub"
 
 eval "$(ssh-agent)"
+
+echo "adding deploy key..."
+
 ssh-add "$SSH_PATH/deploy_key"
+
+echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
+echo "checkout git branch..."
+
 git checkout "$INPUT_BRANCH"
+
+echo "calling deploy scripts.."
 
 APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
 APP_NAME="${INPUT_PROJECT}-${APP_NAME}"

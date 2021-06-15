@@ -24,6 +24,7 @@ jobs:
           HOST: ${{ secrets.DOKKU_HOST }}
           PROJECT: project-name
           BRANCH: ${{ github.head_ref }}
+          PROJECT_TYPE: ruby
 ```
 
 ### Required Variables
@@ -33,3 +34,6 @@ jobs:
 * **HOST**: The host the action will SSH to run the git push command. ie, `your.site.com`.
 * **PROJECT**: The project name is used to define the app name.
 * **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
+* **PROJECT_TYPE**: (ruby, node) set buildpack according to the project type
+* **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
+* **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)

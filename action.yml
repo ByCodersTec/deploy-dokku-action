@@ -21,6 +21,16 @@ inputs:
     description: Branch used to deploy the application.
     required: true
     default: master
+  PROJECT_TYPE:
+    description: (Optional) ruby - Rails projects, node - Javascript projects
+    default: ruby
+  REDIS:
+    description: (Optional) true - Set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
+    default: false
+  ELASTICSEARCH:
+    description: (Optional) true - Set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
+    default: false
+
 runs:
   using: docker
   image: Dockerfile

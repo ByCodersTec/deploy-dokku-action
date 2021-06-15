@@ -34,11 +34,11 @@ echo "calling deploy scripts.."
 APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
 APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 
-echo "Project type: $PROJECT_TYPE"
-echo "REDIS Instance: $REDIS"
-echo "ELASTICSEARCH Instance: $ELASTICSEARCH"
+echo "Project type: $INPUT_PROJECT_TYPE"
+echo "REDIS Instance: $INPUT_REDIS"
+echo "ELASTICSEARCH Instance: $INPUT_ELASTICSEARCH"
 
-if [[ "$PROJECT_TYPE" == "node" ]];then
+if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 else
   CREATE_APP_COMMAND="sh ./scripts/deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
@@ -47,7 +47,7 @@ fi
 SET_VARIABLES_COMMAND="bash ./scripts/variables.sh $INPUT_PROJECT $INPUT_BRANCH"
 POST_DEPLOY_COMMAND="sh ./scripts/after_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 
-echo "======== $PROJECT_TYPE project ========"
+echo "======== $INPUT_PROJECT_TYPE project ========"
 echo $CREATE_APP_COMMAND
 echo $SET_VARIABLES_COMMAND
 echo "======================================="
@@ -55,13 +55,13 @@ echo "======================================="
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_APP_COMMAND
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $SET_VARIABLES_COMMAND
 
-if [ "$REDIS" = true ]; then
+if [ "$INPUT_REDIS" = true ]; then
   CREATE_REDIS_COMMAND="sh ./scripts/redis.sh $INPUT_BRANCH $INPUT_PROJECT"
   echo "Configurando instancia REDIS...aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_REDIS_COMMAND
 fi
 
-if [ "$ELASTICEARCH" = true ]; then
+if [ "$INPUT_ELASTICEARCH" = true ]; then
   CREATE_ELASTICSEARCH_COMMAND="sh ./scripts/elasticsearch.sh $INPUT_BRANCH $INPUT_PROJECT"
   echo "Configurando instancia ELASTICSEARCH.. aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_ELASTICSEARCH_COMMAND

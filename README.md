@@ -25,9 +25,10 @@ jobs:
           PROJECT: project-name
           BRANCH: ${{ github.head_ref }}
           PROJECT_TYPE: ruby
+
 ```
 
-### Variables
+### Required variables
 
 * **PRIVATE_KEY**: Your SSH private key, preferably from Secrets.
 * **PUBLIC_KEY**: Your SSH public key, preferably from Secrets.
@@ -35,5 +36,8 @@ jobs:
 * **PROJECT**: The project name is used to define the app name.
 * **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
 * **PROJECT_TYPE**: (ruby, node) set buildpack according to the project type
+
+### Optional Variables
+
 * **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
 * **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)

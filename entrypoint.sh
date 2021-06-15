@@ -34,10 +34,6 @@ echo "calling deploy scripts.."
 APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
 APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 
-echo "Project type: $INPUT_PROJECT_TYPE"
-echo "REDIS Instance: $INPUT_REDIS"
-echo "ELASTICSEARCH Instance: $INPUT_ELASTICSEARCH"
-
 if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 else
@@ -54,6 +50,12 @@ echo "======================================="
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_APP_COMMAND
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $SET_VARIABLES_COMMAND
+
+if [ "$INPUT_POSTGRES" = true ]; then
+  CREATE_POSTGRES_COMMAND="sh ./scripts/postgres.sh $INPUT_BRANCH $INPUT_PROJECT"
+  echo "Configurando instancia POSTGRES...aguarde!"
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_POSTGRES_COMMAND
+fi
 
 if [ "$INPUT_REDIS" = true ]; then
   CREATE_REDIS_COMMAND="sh ./scripts/redis.sh $INPUT_BRANCH $INPUT_PROJECT"

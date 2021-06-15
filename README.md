@@ -27,7 +27,7 @@ jobs:
           PROJECT_TYPE: ruby
 ```
 
-### Required Variables
+### Variables
 
 * **PRIVATE_KEY**: Your SSH private key, preferably from Secrets.
 * **PUBLIC_KEY**: Your SSH public key, preferably from Secrets.

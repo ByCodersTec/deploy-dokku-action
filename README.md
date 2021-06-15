@@ -39,5 +39,6 @@ jobs:
 
 ### Optional Variables
 
+* **POSTGRES** (Optional) if true, set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
 * **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
 * **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)

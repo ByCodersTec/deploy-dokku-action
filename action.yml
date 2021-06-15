@@ -25,6 +25,10 @@ inputs:
     description: (Optional) ruby - Rails projects, node - Javascript projects
     required: false
     default: ruby
+  POSTGRES:
+    description: (Optional) true - Set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
+    required: false
+    default: false
   REDIS:
     description: (Optional) true - Set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
     required: false

@@ -52,13 +52,13 @@ echo "======================================="
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_APP_COMMAND
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $SET_VARIABLES_COMMAND
 
-if $REDIS
+if $REDIS then
   CREATE_REDIS_COMMAND="sh ./scripts/redis.sh $INPUT_BRANCH $INPUT_PROJECT"
   echo "Configurando instancia REDIS...aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_REDIS_COMMAND
 fi
 
-if $ELASTICEARCH
+if $ELASTICEARCH then
   CREATE_ELASTICSEARCH_COMMAND="sh ./scripts/elasticsearch.sh $INPUT_BRANCH $INPUT_PROJECT"
   echo "Configurando instancia ELASTICSEARCH.. aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_ELASTICSEARCH_COMMAND

@@ -8,7 +8,7 @@ else
   APP_NAME="${PROJECT_NAME}-${APP_NAME}"
 fi
 
-if dokku app:exists $APP_NAME
+if dokku apps:exists $APP_NAME
 then
   echo "O certificado $APP_NAME ja existe... saindo agora!"
   dokku proxy:build-config $APP_NAME

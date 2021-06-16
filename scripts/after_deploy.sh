@@ -8,11 +8,16 @@ else
   APP_NAME="${PROJECT_NAME}-${APP_NAME}"
 fi
 
-if dokku apps:exists $APP_NAME
+echo "Verificando se existe certificado digital..."
+
+RESULT=$(dokku letsencrypt:list | grep "$APP_NAME")
+
+if [ -z "$RESULT" ]
 then
-  echo "O certificado $APP_NAME ja existe... saindo agora!"
+  echo "Nenhum certificado encontrado, gerando um novo.."
+  dokku letsencrypt:enable $APP_NAME 
   dokku proxy:build-config $APP_NAME
 else
-  dokku letsencrypt:enable $APP_NAME 
+  echo "O certificado $APP_NAME ja existe... saindo agora!"
   dokku proxy:build-config $APP_NAME
 fi

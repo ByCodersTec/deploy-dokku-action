@@ -25,7 +25,6 @@ jobs:
           PROJECT: project-name
           BRANCH: ${{ github.head_ref }}
           PROJECT_TYPE: ruby
-
 ```
 
 ### Required variables
@@ -42,3 +41,27 @@ jobs:
 * **POSTGRES** (Optional) if true, set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
 * **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
 * **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
+
+
+### Additional information
+
+Every project needs a [Procfile](https://devcenter.heroku.com/articles/procfile) with initialization configuration.
+Content example: 
+```
+web: bundle exec puma -C config/puma.rb
+worker: bundle exec sidekiq -C config/sidekiq.yml
+release: bundle exec rails db:migrate db:seed
+```
+
+Projects with a [Sidekiq](https://sidekiq.org/) instance, require a [DOKKU_SCALE](https://dokku.com/docs/processes/process-management/#manually-managing-process-scaling) configuration file setting number of instances for every resource.
+Content example:
+```
+web=1
+worker=1
+```
+
+Projects that needs Elasticsearch instance, require the **ELASTICSEARCH=true** in `deploy.yml` file.
+
+Projects that needs a REDIS inscance, require the **REDIS=true** in `deploy.yml` file.
+
+Project types different from ruby that requires a postgres instance, needs the **POSTGRES=true** in `deploy.yml` file.

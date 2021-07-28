@@ -36,6 +36,8 @@ APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 
 if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
+elif [[ "$INPUT_PROJECT_TYPE" == "python" ]];then
+  CREATE_APP_COMMAND="sh ./scripts/python_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 else
   CREATE_APP_COMMAND="sh ./scripts/deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
 fi

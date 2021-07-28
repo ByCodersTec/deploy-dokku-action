@@ -1,3 +1,5 @@
+APP_NAME="$1"
+PROJECT_NAME="$2"
 APP_NAME=$(echo $APP_NAME | cut -d'/' -f 2)
 if [ -z "$PROJECT_NAME" ]
 then

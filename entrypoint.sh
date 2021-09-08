@@ -65,7 +65,7 @@ if [ "$INPUT_REDIS" = true ]; then
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_REDIS_COMMAND
 fi
 
-if [ "$INPUT_ELASTICEARCH" = true ]; then
+if [ "$INPUT_ELASTICSEARCH" = true ]; then
   CREATE_ELASTICSEARCH_COMMAND="sh ./scripts/elasticsearch.sh $INPUT_BRANCH $INPUT_PROJECT"
   echo "Configurando instancia ELASTICSEARCH.. aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_ELASTICSEARCH_COMMAND

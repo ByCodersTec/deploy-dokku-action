@@ -35,6 +35,7 @@ jobs:
 * **PROJECT**: The project name is used to define the app name.
 * **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
 * **PROJECT_TYPE**: (ruby, node, python) set buildpack according to the project type
+* **REVIEW_APP**: (default true) generates a unique app name for the current branch (ex: projectname-branchname.bycodersapp.com)
 
 ### Optional Variables
 

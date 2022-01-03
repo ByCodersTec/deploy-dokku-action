@@ -33,11 +33,14 @@ echo "calling deploy scripts.."
 
 APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
 
-if [ "$REVIEW_APP" = false ]; then
+echo "REVIEW APP= $INPUT_REVIEW_APP"
+if [ "$INPUT_REVIEW_APP" = false ]; then
   APP_NAME="${INPUT_PROJECT}"
 else
   APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
 fi
+
+echo "APP NAME=$APP_NAME"
 
 if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"

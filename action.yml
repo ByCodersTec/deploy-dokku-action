@@ -37,6 +37,10 @@ inputs:
     description: (Optional) true - Set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
     required: false
     default: false
+  REVIEW_APP:
+    description: true - Set if deploy generates a new app (with branch name)
+    required: true
+    default: true
 
 runs:
   using: docker

@@ -32,7 +32,12 @@ git checkout "$INPUT_BRANCH"
 echo "calling deploy scripts.."
 
 APP_NAME=$(echo $INPUT_BRANCH | cut -d'/' -f 2)
-APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
+
+if [ "$REVIEW_APP" = false ]; then
+  APP_NAME="${INPUT_PROJECT}"
+else
+  APP_NAME="${INPUT_PROJECT}-${APP_NAME}"
+end
 
 if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"

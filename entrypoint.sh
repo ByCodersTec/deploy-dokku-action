@@ -62,19 +62,19 @@ ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $SET_VARIABLES_COMMAND
 
 if [ "$INPUT_POSTGRES" = true ]; then
-  CREATE_POSTGRES_COMMAND="sh ./scripts/postgres.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_POSTGRES_COMMAND="sh ./scripts/postgres.sh $APP_NAME"
   echo "Configurando instancia POSTGRES...aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_POSTGRES_COMMAND
 fi
 
 if [ "$INPUT_REDIS" = true ]; then
-  CREATE_REDIS_COMMAND="sh ./scripts/redis.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_REDIS_COMMAND="sh ./scripts/redis.sh $APP_NAME"
   echo "Configurando instancia REDIS...aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_REDIS_COMMAND
 fi
 
 if [ "$INPUT_ELASTICSEARCH" = true ]; then
-  CREATE_ELASTICSEARCH_COMMAND="sh ./scripts/elasticsearch.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_ELASTICSEARCH_COMMAND="sh ./scripts/elasticsearch.sh $APP_NAME"
   echo "Configurando instancia ELASTICSEARCH.. aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_ELASTICSEARCH_COMMAND
 fi

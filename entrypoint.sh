@@ -43,15 +43,15 @@ fi
 echo "APP NAME=$APP_NAME"
 
 if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
-  CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "python" ]];then
-  CREATE_APP_COMMAND="sh ./scripts/python_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_APP_COMMAND="sh ./scripts/python_deploy.sh $APP_NAME"
 else
-  CREATE_APP_COMMAND="sh ./scripts/deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
+  CREATE_APP_COMMAND="sh ./scripts/deploy.sh $APP_NAME"
 fi
 
-SET_VARIABLES_COMMAND="bash ./scripts/variables.sh $INPUT_PROJECT $INPUT_BRANCH"
-POST_DEPLOY_COMMAND="sh ./scripts/after_deploy.sh $INPUT_BRANCH $INPUT_PROJECT"
+SET_VARIABLES_COMMAND="bash ./scripts/variables.sh $INPUT_PROJECT $APP_NAME"
+POST_DEPLOY_COMMAND="sh ./scripts/after_deploy.sh $APP_NAME"
 
 echo "======== $INPUT_PROJECT_TYPE project ========"
 echo $CREATE_APP_COMMAND

@@ -5,8 +5,6 @@ APP_NAME=$(echo $APP_NAME | cut -d'/' -f 2)
 if [ -z "$PROJECT_NAME" ]
 then
   echo "project name is empty"
-else
-  APP_NAME="${PROJECT_NAME}-${APP_NAME}"
 fi
 echo $APP_NAME
 if [ -e ./scripts/$PROJECT_NAME ]

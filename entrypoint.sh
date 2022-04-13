@@ -25,6 +25,10 @@ echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
+echo "setting safe directory /github/workspace"
+
+git config --global --add safe.directory /github/workspace
+
 echo "checkout git branch...$INPUT_BRANCH"
 
 git checkout "$INPUT_BRANCH"

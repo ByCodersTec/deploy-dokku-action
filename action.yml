@@ -2,8 +2,8 @@ name: Deploy to Dokku
 author: Bycoders
 description: Push changes to Dokku server to automatically deploy the application.
 branding:
-    icon: server
-    color: blue
+  icon: server
+  color: blue
 inputs:
   PRIVATE_KEY:
     description: Private key to use for SSH authentication.
@@ -22,7 +22,7 @@ inputs:
     required: true
     default: master
   PROJECT_TYPE:
-    description: (Optional) ruby - Rails projects, node - Javascript projects
+    description: (Optional) ruby, node, java, python
     required: false
     default: ruby
   POSTGRES:

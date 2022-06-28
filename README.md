@@ -29,25 +29,25 @@ jobs:
 
 ### Required variables
 
-* **PRIVATE_KEY**: Your SSH private key, preferably from Secrets.
-* **PUBLIC_KEY**: Your SSH public key, preferably from Secrets.
-* **HOST**: The host the action will SSH to run the git push command. ie, `your.site.com`.
-* **PROJECT**: The project name is used to define the app name.
-* **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
-* **PROJECT_TYPE**: (ruby, node, python) set buildpack according to the project type
-* **REVIEW_APP**: (default true) generates a unique app name for the current branch (ex: projectname-branchname.bycodersapp.com)
+- **PRIVATE_KEY**: Your SSH private key, preferably from Secrets.
+- **PUBLIC_KEY**: Your SSH public key, preferably from Secrets.
+- **HOST**: The host the action will SSH to run the git push command. ie, `your.site.com`.
+- **PROJECT**: The project name is used to define the app name.
+- **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
+- **PROJECT_TYPE**: (ruby, node, python, java) set buildpack according to the project type
+- **REVIEW_APP**: (default true) generates a unique app name for the current branch (ex: projectname-branchname.bycodersapp.com)
 
 ### Optional Variables
 
-* **POSTGRES** (Optional) if true, set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
-* **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
-* **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
-
+- **POSTGRES** (Optional) if true, set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
+- **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
+- **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
 
 ### Additional information
 
 Every project needs a [Procfile](https://devcenter.heroku.com/articles/procfile) with initialization configuration.
-Content example: 
+Content example:
+
 ```
 web: bundle exec puma -C config/puma.rb
 worker: bundle exec sidekiq -C config/sidekiq.yml
@@ -56,6 +56,7 @@ release: bundle exec rails db:migrate db:seed
 
 Projects with a [Sidekiq](https://sidekiq.org/) instance, require a [DOKKU_SCALE](https://dokku.com/docs/processes/process-management/#manually-managing-process-scaling) configuration file setting number of instances for every resource.
 Content example:
+
 ```
 web=1
 worker=1

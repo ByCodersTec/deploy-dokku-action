@@ -50,7 +50,7 @@ if [[ "$INPUT_PROJECT_TYPE" == "node" ]];then
   CREATE_APP_COMMAND="sh ./scripts/node_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "python" ]];then
   CREATE_APP_COMMAND="sh ./scripts/python_deploy.sh $APP_NAME"
-elsif [[ "$INPUT_PROJECT_TYPE" == "java" ]];then
+elif [[ "$INPUT_PROJECT_TYPE" == "java" ]];then
   CREATE_APP_COMMAND="sh ./scripts/java_deploy.sh $APP_NAME"
 else
   CREATE_APP_COMMAND="sh ./scripts/deploy.sh $APP_NAME"

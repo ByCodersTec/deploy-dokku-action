@@ -85,6 +85,12 @@ if [ "$INPUT_ELASTICSEARCH" = true ]; then
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_ELASTICSEARCH_COMMAND
 fi
 
+if [ "$INPUT_MONGO" = true ]; then
+  CREATE_MONGO_COMMAND="sh ./scripts/mongo.sh $APP_NAME"
+  echo "Configurando instancia MONGO...aguarde!"
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_MONGO_COMMAND
+fi
+
 GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $POST_DEPLOY_COMMAND

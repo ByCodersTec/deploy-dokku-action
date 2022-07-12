@@ -42,6 +42,7 @@ jobs:
 - **POSTGRES** (Optional) if true, set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
 - **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
 - **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
+- **MONGO** (Optional) if true, set up a mongo instance (Make sure that your app is using default MONGO_URL env variable)
 
 ### Additional information
 
@@ -67,3 +68,5 @@ Projects that needs Elasticsearch instance, require the **ELASTICSEARCH=true** i
 Projects that needs a REDIS inscance, require the **REDIS=true** in `deploy.yml` file.
 
 Project types different from ruby that requires a postgres instance, needs the **POSTGRES=true** in `deploy.yml` file.
+
+Projects that needs a MONGO inscance, require the **MONGO=true** in `deploy.yml` file.

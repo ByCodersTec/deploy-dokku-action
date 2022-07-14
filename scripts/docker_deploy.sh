@@ -1,4 +1,5 @@
 APP_NAME="$1"
+FILE_NAME=$2"
 APP_NAME=$(echo $APP_NAME | cut -d'/' -f 2)
 
 if dokku apps:exists $APP_NAME
@@ -9,6 +10,7 @@ else
   dokku apps:create $APP_NAME
   dokku domains:add $APP_NAME $APP_NAME.bycodersapp.com
   dokku buildpacks:clear $APP_NAME
+  dokku builder-dockerfile:set $APP_NAME dockerfile-path $FILE_NAME
   dokku config:set --no-restart $APP_NAME DOKKU_APP_TYPE=dockerfile
   dokku config:set --no-restart $APP_NAME DOKKU_LETSENCRYPT_EMAIL=vanildo@bycoders.com.br
 fi

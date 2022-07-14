@@ -55,7 +55,7 @@ elif [[ "$INPUT_PROJECT_TYPE" == "ruby" ]];then
 elif [[ "$INPUT_PROJECT_TYPE" == "java" ]];then
   CREATE_APP_COMMAND="sh ./scripts/java_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "dockerfile" ]];then
-  CREATE_APP_COMMAND="sh ./scripts/docker_deploy.sh $APP_NAME"
+  CREATE_APP_COMMAND="sh ./scripts/docker_deploy.sh $APP_NAME $INPUT_DOCKERFILE_NAME"
 else
   CREATE_APP_COMMAND="sh ./scripts/deploy.sh $APP_NAME"
 fi

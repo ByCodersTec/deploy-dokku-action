@@ -25,6 +25,10 @@ inputs:
     description: (Optional) ruby, node, java, python, dockerfile
     required: false
     default: ruby
+  DOCKERFILE_NAME:
+    description: (Optional) when project type is dockerfile, is possible to set a specific config to deploy for each environment
+    required: false
+    default: Dockerfile 
   POSTGRES:
     description: (Optional) true - Set up a postgres instance (Make sure that your app is using default DATABASE_URL env variable)
     required: false

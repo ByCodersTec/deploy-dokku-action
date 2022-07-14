@@ -1,6 +1,5 @@
 APP_NAME="$1"
 APP_NAME=$(echo $APP_NAME | cut -d'/' -f 2)
-DB_NAME="${APP_NAME}_production"
 
 if dokku apps:exists $APP_NAME
 then

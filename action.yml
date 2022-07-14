@@ -22,7 +22,7 @@ inputs:
     required: true
     default: master
   PROJECT_TYPE:
-    description: (Optional) ruby, node, java, python
+    description: (Optional) ruby, node, java, python, dockerfile
     required: false
     default: ruby
   POSTGRES:

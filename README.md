@@ -34,7 +34,7 @@ jobs:
 - **HOST**: The host the action will SSH to run the git push command. ie, `your.site.com`.
 - **PROJECT**: The project name is used to define the app name.
 - **BRANCH**: Repository branch that should be used for deploy, `master` is set by default.
-- **PROJECT_TYPE**: (ruby, node, python, java) set buildpack according to the project type
+- **PROJECT_TYPE**: (ruby, node, python, java, dockerfile) set or not the buildpack according to the project type
 - **REVIEW_APP**: (default true) generates a unique app name for the current branch (ex: projectname-branchname.bycodersapp.com)
 
 ### Optional Variables

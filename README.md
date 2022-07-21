@@ -43,6 +43,7 @@ jobs:
 - **REDIS**: (Optional) if true, set up a redis instance (Make sure that your app is using default REDIS_URL env variable)
 - **ELASTICSEARCH**: (Optional) if true, set up a elasticsearch instance (Make sure that your app is using default ELASTICSEARCH_URL env variable)
 - **MONGO** (Optional) if true, set up a mongo instance (Make sure that your app is using default MONGO_URL env variable)
+- **RABBITMQ** (Optional) if true, set up a RabbitMQ instance (Make sure thar your app is using default RABBITMQ_URL env variable)
 
 ### Additional information
 

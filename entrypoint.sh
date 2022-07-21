@@ -95,6 +95,12 @@ if [ "$INPUT_MONGO" = true ]; then
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_MONGO_COMMAND
 fi
 
+if [ "$INPUT_RABBITMQ" = true ]; then
+  CREATE_RABBITMQ_COMMAND="sh ./scripts/rabbitmq.sh $APP_NAME"
+  echo "Configurando instancia RABBITMQ...aguarde!"
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_RABBITMQ_COMMAND
+fi
+
 GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push -f dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master
 
 ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $POST_DEPLOY_COMMAND

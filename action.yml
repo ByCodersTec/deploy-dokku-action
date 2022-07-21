@@ -45,6 +45,10 @@ inputs:
     description: (Optional) true - Set up a mongo instance and link to app using the MONGO_URL environment variable
     required: false
     default: false
+  RABBITMQ:
+    description: (Optional) true - Set up a rabbitmq instance and link to app
+    required: false
+    default: false
   REVIEW_APP:
     description: true - Set if deploy generates a new app (with branch name)
     required: true

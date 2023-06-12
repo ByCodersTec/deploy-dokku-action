@@ -52,6 +52,8 @@ elif [[ "$INPUT_PROJECT_TYPE" == "python" ]];then
   CREATE_APP_COMMAND="sh ./scripts/python_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "ruby" ]];then
   CREATE_APP_COMMAND="sh ./scripts/ruby_deploy.sh $APP_NAME"
+elif [[ "$INPUT_PROJECT_TYPE" == "rails_mvc" ]];then
+  CREATE_APP_COMMAND="sh ./scripts/rails_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "java" ]];then
   CREATE_APP_COMMAND="sh ./scripts/java_deploy.sh $APP_NAME"
 elif [[ "$INPUT_PROJECT_TYPE" == "dockerfile" ]];then

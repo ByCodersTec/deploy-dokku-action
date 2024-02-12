@@ -32,8 +32,8 @@ ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
   mv /github/workspace/$INPUT_WORKING_DIR /github/workspace.tmp
-  rm -rf /github/workspace/
-  mv /github/workspace.tmp /github/workspace
+  rm -rf /github/workspace/*
+  mv /github/workspace.tmp/* /github/workspace -R
 else 
   echo "checkout git branch...$INPUT_BRANCH"
   git checkout "$INPUT_BRANCH"

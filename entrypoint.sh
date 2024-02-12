@@ -34,6 +34,9 @@ if [[ -v INPUT_WORKING_DIR ]];then
   echo "ls -lah /github/workspace"
   ls -lah /github/workspace
 
+  echo "ls -lah /github/workspace/$INPUT_WORKING_DIR"
+  ls -lah /github/workspace/"$INPUT_WORKING_DIR"
+
   echo "movendo arquivos"
   cp /github/workspace/"$INPUT_WORKING_DIR"/* /github/workspace/ -R
   echo "ls -lah /github/workspace"

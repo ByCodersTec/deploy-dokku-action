@@ -29,14 +29,12 @@ echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
-echo "checkout git branch...$INPUT_BRANCH"
-
-if [["$INPUT_BRANCH" != ""]];then
-  git checkout "$INPUT_BRANCH"
-fi
 
 if [["$WORKING_DIR" != ""]];then
   cd "$WORKING_DIR"
+else 
+  echo "checkout git branch...$INPUT_BRANCH"
+  git checkout "$INPUT_BRANCH"
 fi
 
 echo "calling deploy scripts.."

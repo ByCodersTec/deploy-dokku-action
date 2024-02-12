@@ -33,7 +33,8 @@ echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
   mv /github/workspace/$INPUT_WORKING_DIR /github/workspace.tmp
   rm -rf /github/workspace/*
-  mv /github/workspace.tmp/* /github/workspace -R
+  cp /github/workspace.tmp/* /github/workspace -R
+  rm -rf /github/workspace.tmp
 else 
   echo "checkout git branch...$INPUT_BRANCH"
   git checkout "$INPUT_BRANCH"

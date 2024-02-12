@@ -33,6 +33,12 @@ echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
   echo "ls -lah /github/workspace"
   ls -lah /github/workspace
+
+  echo "movendo arquivos"
+  mv /github/workspace/$INPUT_WORKING_DIR/* /github/workspace
+  echo "ls -lah /github/workspace"
+  ls -lah /github/workspace
+
   git config --global user.email "dokku@bycoders.com.br"
   git config --global user.name "dokku deploy"
   git init
@@ -43,7 +49,7 @@ if [[ -v INPUT_WORKING_DIR ]];then
   #echo "ls -lah /github/workspace/$INPUT_WORKING_DIR"
   #ls -lah /github/workspace/$INPUT_WORKING_DIR
 
-  #mv /github/workspace/$INPUT_WORKING_DIR /github/workspace.tmp
+  
   #cp /github/workspace.tmp/* /github/workspace -R
   #ls -lah /github/workspace
   #rm -rf /github/workspace.tmp

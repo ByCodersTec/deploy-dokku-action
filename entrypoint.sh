@@ -31,8 +31,9 @@ ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
 echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
-  cd "$INPUT_WORKING_DIR"
-  git config --global --add safe.directory /github/workspace/$INPUT_WORKING_DIR
+  mv /github/workspace/$INPUT_WORKING_DIR /github/workspace.tmp
+  rm -rf /github/workspace/
+  mv /github/workspace.tmp /github/workspace
 else 
   echo "checkout git branch...$INPUT_BRANCH"
   git checkout "$INPUT_BRANCH"

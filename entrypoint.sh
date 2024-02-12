@@ -29,9 +29,9 @@ echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
-echo "WORKING_DIR ... $WORKING_DIR"
-if [["$WORKING_DIR" != ""]];then
-  cd "$WORKING_DIR"
+echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
+if [["$INPUT_WORKING_DIR" != ""]];then
+  cd "$INPUT_WORKING_DIR"
 else 
   echo "checkout git branch...$INPUT_BRANCH"
   git checkout "$INPUT_BRANCH"

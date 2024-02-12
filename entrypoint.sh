@@ -31,7 +31,7 @@ ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
 echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
-  #echo "ls -lah /github/workspace"
+  echo "ls -lah /github/workspace"
   #ls -lah /github/workspace
 
   #echo "ls -lah /github/workspace/$INPUT_WORKING_DIR"

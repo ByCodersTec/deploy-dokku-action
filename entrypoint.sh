@@ -31,12 +31,14 @@ ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
 echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
 if [[ -v INPUT_WORKING_DIR ]];then
-  #echo "ls -lah /github/workspace"
+  echo "ls -lah /github/workspace"
+  ls -lah /github/workspace
+  git config --global user.email "dokku@bycoders.com.br"
+  git config --global user.name "dokku deploy"
   git init
   git checkout -b "$INPUT_BRANCH"
   git add . --all
-  git commit -m "dokku deploy"  
-  #ls -lah /github/workspace
+  git commit -m "dokku deploy"
 
   #echo "ls -lah /github/workspace/$INPUT_WORKING_DIR"
   #ls -lah /github/workspace/$INPUT_WORKING_DIR

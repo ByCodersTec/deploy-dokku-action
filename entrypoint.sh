@@ -48,14 +48,6 @@ if [[ -v INPUT_WORKING_DIR ]];then
   git checkout -b "$INPUT_BRANCH"
   git add . --all
   git commit -m "dokku deploy"
-
-  #echo "ls -lah /github/workspace/$INPUT_WORKING_DIR"
-  #ls -lah /github/workspace/$INPUT_WORKING_DIR
-
-  
-  #cp /github/workspace.tmp/* /github/workspace -R
-  #ls -lah /github/workspace
-  #rm -rf /github/workspace.tmp
 else 
   echo "checkout git branch...$INPUT_BRANCH"
   git checkout "$INPUT_BRANCH"
@@ -129,6 +121,12 @@ if [ "$INPUT_RABBITMQ" = true ]; then
   CREATE_RABBITMQ_COMMAND="sh ./scripts/rabbitmq.sh $APP_NAME"
   echo "Configurando instancia RABBITMQ...aguarde!"
   ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_RABBITMQ_COMMAND
+fi
+
+if [ "$INPUT_MYSQL" = true ]; then
+  CREATE_MYSQL_COMMAND="sh ./scripts/mysql.sh $APP_NAME"
+  echo "Configurando instancia MYSQL...aguarde!"
+  ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no root@$INPUT_HOST $CREATE_MYSQL_COMMAND
 fi
 
 GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no" git push dokku@"$INPUT_HOST":"$APP_NAME" "$INPUT_BRANCH":master --force

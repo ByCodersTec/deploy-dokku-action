@@ -49,6 +49,10 @@ inputs:
     description: (Optional) true - Set up a rabbitmq instance and link to app
     required: false
     default: false
+  MYSQL:
+    description: (Optional) true - Set up a mysql instance (Make sure that your app is using default DATABASE_URL env variable)
+    required: false
+    default: false    
   REVIEW_APP:
     description: true - Set if deploy generates a new app (with branch name)
     required: true

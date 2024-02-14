@@ -29,8 +29,9 @@ echo "adding host address to known hosts..."
 
 ssh-keyscan -t rsa "$INPUT_HOST" >> "$SSH_PATH/known_hosts"
 
-echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR"
+echo "INPUT_WORKING_DIR ... $INPUT_WORKING_DIR username: $MVN_GITHUB_PACKAGE_USERNAME"
 if [[ -v INPUT_WORKING_DIR ]];then
+  #solution for monorepo
   echo "ls -lah /github/workspace"
   ls -lah /github/workspace
 

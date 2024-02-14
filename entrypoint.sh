@@ -42,6 +42,9 @@ if [[ -v INPUT_WORKING_DIR ]];then
   echo "ls -lah /github/workspace"
   ls -lah /github/workspace
 
+  echo "Copiando dependencias ..."
+  cp /home/runner/.m2/repository/* /github/workspace -R
+
   git config --global user.email "dokku@bycoders.com.br"
   git config --global user.name "dokku deploy"
   git init
